@@ -6,13 +6,14 @@ import it.unipi.di.acube.batframework.utils.WikipediaApiInterface;
 import java.io.IOException;
 import java.util.HashSet;
 
-import annotatorstub.annotator.FakeAnnotator;
+import annotatorstub.annotator.BaselineAnnotator;
 
 public class AnnotatorMain {
 
 	public static void main(String[] args) throws IOException {
-		FakeAnnotator ann = new FakeAnnotator();
-		String query = "strawberry fields forever";
+		BaselineAnnotator ann = new BaselineAnnotator();
+		//String query = "strawberry fields forever";
+        String query = "n georgia ";
 		HashSet<Annotation> annotations = ann.solveA2W(query);
 		for (Annotation a : annotations) {
 			int wid = a.getConcept();
