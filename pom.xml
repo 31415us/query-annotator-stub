@@ -53,7 +53,7 @@
                             <artifactId>exec-maven-plugin</artifactId>
                             <version>1.4.0</version>
                             <configuration>
-                            <mainClass>annotatorstub.main.AnnotatorMain</mainClass>
+                            <mainClass>annotatorstub.main.BenchmarkMain</mainClass>
                             </configuration>
                         </plugin>
                 </plugins>
