@@ -54,6 +54,14 @@ public class Baseline1Annotator implements Sa2WSystem {
 	public HashSet<ScoredAnnotation> solveSa2W(String text) throws AnnotationException {
 		lastTime = System.currentTimeMillis();
 
+        try {
+            WATRelatednessComputer.setCache("relatedness.cache");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
 		HashSet<ScoredAnnotation> result = new HashSet<>();
 
         ArrayList<String> words = new ArrayList<>(Arrays.asList(text.split(" ")));
@@ -83,11 +91,15 @@ public class Baseline1Annotator implements Sa2WSystem {
                         int bestId = 0;
                         for (int id : ids){
                             double prob = WATRelatednessComputer.getCommonness(temp, id);
+                            if (prob == 0.0) continue;
                             if (prob > maxProb) {
                                 maxProb = prob;
                                 bestId = id;
+                            } else if (prob == maxProb && id < bestId){
+                                bestId = id;
                             }
                         }
+                        if (maxProb == 0.0) continue;
                         /* Add to the set */
                         int index = text.indexOf(temp);
                         result.add(new ScoredAnnotation(index, temp.length(), bestId, (float) maxProb));

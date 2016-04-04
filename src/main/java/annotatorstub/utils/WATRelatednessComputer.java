@@ -32,8 +32,9 @@ public class WATRelatednessComputer implements Serializable {
 	public synchronized void increaseFlushCounter()
 			throws FileNotFoundException, IOException {
 		flushCounter++;
-		if ((flushCounter % FLUSH_EVERY) == 0)
+		if ((flushCounter % FLUSH_EVERY) == 0) {
 			flush();
+		}
 	}
 
 	public static synchronized void flush() throws FileNotFoundException,
