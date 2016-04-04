@@ -1,5 +1,6 @@
 package annotatorstub.main;
 
+import annotatorstub.annotator.BestProbaFirstAnnotator;
 import it.unipi.di.acube.batframework.data.Annotation;
 import it.unipi.di.acube.batframework.utils.WikipediaApiInterface;
 
@@ -11,8 +12,9 @@ import annotatorstub.annotator.BaselineAnnotator;
 public class AnnotatorMain {
 
 	public static void main(String[] args) throws IOException {
-		BaselineAnnotator ann = new BaselineAnnotator();
+		//BaselineAnnotator ann = new BaselineAnnotator();
 		//String query = "strawberry fields forever";
+		BestProbaFirstAnnotator ann = new BestProbaFirstAnnotator();
         String query = "n georgia ";
 		HashSet<Annotation> annotations = ann.solveA2W(query);
 		for (Annotation a : annotations) {

@@ -1,5 +1,6 @@
 package annotatorstub.main;
 
+import annotatorstub.annotator.BestProbaFirstAnnotator;
 import it.unipi.di.acube.batframework.cache.BenchmarkCache;
 import it.unipi.di.acube.batframework.data.Annotation;
 import it.unipi.di.acube.batframework.data.Tag;
@@ -23,7 +24,8 @@ public class BenchmarkMain {
 	public static void main(String[] args) throws Exception {
 		WikipediaApiInterface wikiApi = WikipediaApiInterface.api();
 		A2WDataset ds = DatasetBuilder.getGerdaqDevel();
-		BaselineAnnotator ann = new BaselineAnnotator();
+		//BaselineAnnotator ann = new BaselineAnnotator();
+		BestProbaFirstAnnotator ann = new BestProbaFirstAnnotator();
 
 		List<HashSet<Tag>> resTag = BenchmarkCache.doC2WTags(ann, ds);
 		List<HashSet<Annotation>> resAnn = BenchmarkCache.doA2WAnnotations(ann, ds);
