@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.ArrayList;
 
-public class NaiveSegmenter
+public class NaiveSegmentation
 {
     public enum SegmentationToken
     {
@@ -16,7 +16,7 @@ public class NaiveSegmenter
 
     private HashMap<Integer, HashSet<ArrayList<SegmentationToken> > > cache;
 
-    public NaiveSegmenter()
+    public NaiveSegmentation()
     {
         this.cache = new HashMap<Integer, HashSet<ArrayList<SegmentationToken> > >();
 

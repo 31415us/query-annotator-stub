@@ -16,19 +16,19 @@ public class Playground
 {
 	public static void main(String[] args) throws Exception {
 
-        /*
+        ///*
         GERDAQDataset trainA = DatasetBuilder.getGerdaqTrainA();
         GERDAQDataset trainB = DatasetBuilder.getGerdaqTrainB();
         GERDAQDataset devel = DatasetBuilder.getGerdaqDevel();
         GERDAQDataset test = DatasetBuilder.getGerdaqTest();
         //*/
 
-        ///*
-        NaiveSegmenter seg = new NaiveSegmenter();
+        /*
+        NaiveSegmentation seg = new NaiveSegmentation();
 
-        for(ArrayList<NaiveSegmenter.SegmentationToken> segmentation : seg.candidateSegmentations(4))
+        for(ArrayList<NaiveSegmentation.SegmentationToken> segmentation : seg.candidateSegmentations(4))
         {
-            for(NaiveSegmenter.SegmentationToken t : segmentation)
+            for(NaiveSegmentation.SegmentationToken t : segmentation)
             {
                 switch(t)
                 {
@@ -50,7 +50,7 @@ public class Playground
         }
         //*/
 
-        /*
+        ///*
         for(String query : trainB.getTextInstanceList()) {
             CoreLabelTokenFactory tokenFac = new CoreLabelTokenFactory();
             StringReader r = new StringReader(query);
@@ -59,13 +59,20 @@ public class Playground
             PTBTokenizer<CoreLabel> tokenizer = new PTBTokenizer<CoreLabel>(r, tokenFac, options);
 
             System.out.println(query + ":");
+            ArrayList<CoreLabel> l = new ArrayList<CoreLabel>();
             while(tokenizer.hasNext()) {
                 CoreLabel token = tokenizer.next();
-                System.out.print("\t");
-                System.out.print(token.originalText());
-                System.out.print(" " + token.beginPosition() + " " + token.endPosition());
-                System.out.print("\n");
+                l.add(token);
             }
+
+            QueryMention m = new QueryMention(l);
+
+            System.out.print("\t");
+            System.out.print(m);
+            System.out.print(" ");
+            System.out.print(m.start());
+            System.out.print(" ");
+            System.out.print(m.end());
             System.out.println();
         }
         //*/
