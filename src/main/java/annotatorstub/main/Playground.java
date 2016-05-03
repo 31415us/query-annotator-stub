@@ -16,7 +16,7 @@ public class Playground
 {
 	public static void main(String[] args) throws Exception {
 
-        ///*
+        /*
         GERDAQDataset trainA = DatasetBuilder.getGerdaqTrainA();
         GERDAQDataset trainB = DatasetBuilder.getGerdaqTrainB();
         GERDAQDataset devel = DatasetBuilder.getGerdaqDevel();
@@ -50,7 +50,7 @@ public class Playground
         }
         //*/
 
-        ///*
+        /*
         for(String query : trainB.getTextInstanceList()) {
             CoreLabelTokenFactory tokenFac = new CoreLabelTokenFactory();
             StringReader r = new StringReader(query);
@@ -76,5 +76,22 @@ public class Playground
             System.out.println();
         }
         //*/
+        
+        NaiveSegmenter segmenter = new NaiveSegmenter();
+        
+        String dummyQuery = "token1 token2 token3";
+        HashSet<ArrayList<QueryMention> > mentions = segmenter.segmentions(dummyQuery);
+
+        System.out.println(dummyQuery + ":");
+        for(ArrayList<QueryMention> ms : mentions)
+        {
+            for(QueryMention m : ms)
+            {
+                System.out.print(m);
+                System.out.print("\t\t");
+            }
+
+            System.out.println();
+        }
     }
 }
