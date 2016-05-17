@@ -13,7 +13,7 @@ import it.unipi.di.acube.batframework.problems.Sa2WSystem;
 import it.unipi.di.acube.batframework.utils.AnnotationException;
 import it.unipi.di.acube.batframework.utils.ProblemReduction;
 
-public class BestProbaFirstAnnotator implements Sa2WSystem {
+public class WorstProbaFirstAnnotator implements Sa2WSystem {
     private static long lastTime = -1;
     private static float threshold = -1f;
 
@@ -45,7 +45,7 @@ public class BestProbaFirstAnnotator implements Sa2WSystem {
 
         @Override
         public int compare(Tuple tuple, Tuple t1) {
-            return -Double.compare(tuple.prob, t1.prob);
+            return Double.compare(tuple.prob, t1.prob);
         }
     }
 
@@ -96,14 +96,14 @@ public class BestProbaFirstAnnotator implements Sa2WSystem {
                 int bestId = 0;
                 int[] ids;
                 try {
-                    ids = WATRelatednessComputer.getLinks(temp.replaceAll("[^a-zA-Z0-9 ]", ""));
+                    ids = WATRelatednessComputer.getLinks(temp);
                 } catch (Exception e){
                     System.err.println(e.getMessage());
                     continue;
                 }
                 if (ids.length != 0) {
                     for (int id : ids) {
-                        double prob = WATRelatednessComputer.getCommonness(temp.replaceAll("[^a-zA-Z0-9 ]", ""), id) * WATRelatednessComputer.getLp(temp.replaceAll("[^a-zA-Z0-9 ]", ""));
+                        double prob = WATRelatednessComputer.getCommonness(temp, id) * WATRelatednessComputer.getLp(temp);
                         if (prob > maxProb) {
                             maxProb = prob;
                             bestId = id;
@@ -139,7 +139,7 @@ public class BestProbaFirstAnnotator implements Sa2WSystem {
 
     /* To modify */
     public String getName() {
-        return "best proba query annotator";
+        return "worst proba query annotator";
     }
 }
 

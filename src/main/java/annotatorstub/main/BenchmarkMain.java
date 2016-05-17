@@ -2,6 +2,7 @@ package annotatorstub.main;
 
 import annotatorstub.annotator.Baseline1Annotator;
 import annotatorstub.annotator.BestProbaFirstAnnotator;
+import annotatorstub.annotator.WorstProbaFirstAnnotator;
 import annotatorstub.utils.WATRelatednessComputer;
 import it.unipi.di.acube.batframework.cache.BenchmarkCache;
 import it.unipi.di.acube.batframework.data.Annotation;
@@ -34,8 +35,9 @@ public class BenchmarkMain {
 			e.printStackTrace();
 		}
 		A2WDataset ds = DatasetBuilder.getGerdaqDevel();
-		Baseline1Annotator ann = new Baseline1Annotator();
-		//BestProbaFirstAnnotator ann = new BestProbaFirstAnnotator();
+		//Baseline1Annotator ann = new Baseline1Annotator();
+		BestProbaFirstAnnotator ann = new BestProbaFirstAnnotator();
+		//WorstProbaFirstAnnotator ann = new WorstProbaFirstAnnotator();
 
 		List<HashSet<Tag>> resTag = BenchmarkCache.doC2WTags(ann, ds);
 		List<HashSet<Annotation>> resAnn = BenchmarkCache.doA2WAnnotations(ann, ds);

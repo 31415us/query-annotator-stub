@@ -81,7 +81,7 @@ public class Baseline1Annotator implements Sa2WSystem {
                     String temp = String.join(" ", sa.arr.subList(i, i+sizeWord));
                     int[] ids;
                     try {
-                        ids = WATRelatednessComputer.getLinks(temp);
+                        ids = WATRelatednessComputer.getLinks(temp.replaceAll("[^a-zA-Z0-9 ]", ""));
                     } catch (Exception e){
                         System.err.println(e.getMessage());
                         continue;
@@ -90,7 +90,7 @@ public class Baseline1Annotator implements Sa2WSystem {
                         double maxProb = -1;
                         int bestId = 0;
                         for (int id : ids){
-                            double prob = WATRelatednessComputer.getCommonness(temp, id);
+                            double prob = WATRelatednessComputer.getCommonness(temp.replaceAll("[^a-zA-Z0-9 ]", ""), id);
                             if (prob == 0.0) continue;
                             if (prob > maxProb) {
                                 maxProb = prob;
