@@ -89,21 +89,32 @@ public class BestProbaFirstAnnotator implements Sa2WSystem {
         ArrayList<String> words = new ArrayList<>(Arrays.asList(text.split(" ")));
         HashSet<Integer> toExclude = new HashSet<>();
 
+        BingPiggyBack.setJsonCaching();
+
         for(int start = 0; start < words.size(); ++start) {
             for (int end = words.size(); end > start; --end) {
                 String temp = String.join(" ", words.subList(start, end));
                 double maxProb = -1;
                 int bestId = 0;
                 int[] ids;
+
+                BingPiggyBack binger = new BingPiggyBack();
+                binger.query(temp);
+
+                // compute the entities from the correct spelling
+                String correctedSpelling = binger.getSpellingSuggestion();
+                System.out.println(temp + " corrected to " + correctedSpelling);
+
                 try {
-                    ids = WATRelatednessComputer.getLinks(temp.replaceAll("[^a-zA-Z0-9 ]", ""));
+                    //ids = WATRelatednessComputer.getLinks(temp.replaceAll("[^a-zA-Z0-9 ]", ""));
+                    ids = WATRelatednessComputer.getLinks(correctedSpelling);
                 } catch (Exception e){
                     System.err.println(e.getMessage());
                     continue;
                 }
                 if (ids.length != 0) {
                     for (int id : ids) {
-                        double prob = WATRelatednessComputer.getCommonness(temp.replaceAll("[^a-zA-Z0-9 ]", ""), id) * WATRelatednessComputer.getLp(temp.replaceAll("[^a-zA-Z0-9 ]", ""));
+                        double prob = WATRelatednessComputer.getCommonness(correctedSpelling, id) * WATRelatednessComputer.getLp(correctedSpelling);
                         if (prob > maxProb) {
                             maxProb = prob;
                             bestId = id;

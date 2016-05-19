@@ -2,18 +2,34 @@ BASELINE ANNOTATOR
 C2W	mac-P/R/F1: 0.495/0.567/0.458 mic-P/R/F1: 0.438/0.539/0.483 TP/FP/FN: 226/290/193 std-P/R/F1: 0.393/0.415/0.384	baseline-1 query annotator
 A2W-SAM	mac-P/R/F1: 0.480/0.551/0.443 mic-P/R/F1: 0.419/0.516/0.462 TP/FP/FN: 216/300/203 std-P/R/F1: 0.393/0.414/0.382	baseline-1 query annotator
 
+BASELINE ANNOTATOR Alphanumeric
+C2W	mac-P/R/F1: 0.492/0.586/0.471 mic-P/R/F1: 0.445/0.563/0.497 TP/FP/FN: 236/294/183 std-P/R/F1: 0.387/0.412/0.381	baseline-1 query annotator
+A2W-SAM	mac-P/R/F1: 0.455/0.547/0.435 mic-P/R/F1: 0.403/0.511/0.451 TP/FP/FN: 214/317/205 std-P/R/F1: 0.385/0.414/0.378	baseline-1 query annotator
+
+BASELINE ANNOTATOR WITH SPELLING CORRECTION
+C2W	mac-P/R/F1: 0.495/0.635/0.483 mic-P/R/F1: 0.452/0.601/0.516 TP/FP/FN: 252/306/167 std-P/R/F1: 0.381/0.400/0.380	baseline-1 query annotator
+A2W-SAM	mac-P/R/F1: 0.453/0.590/0.441 mic-P/R/F1: 0.406/0.542/0.464 TP/FP/FN: 227/332/192 std-P/R/F1: 0.383/0.413/0.382	baseline-1 query annotator
+
 BestProbaFirst
 C2W	mac-P/R/F1: 0.494/0.572/0.460 mic-P/R/F1: 0.433/0.551/0.485 TP/FP/FN: 231/302/188 std-P/R/F1: 0.394/0.415/0.385	best proba query annotator
 A2W-SAM	mac-P/R/F1: 0.484/0.560/0.449 mic-P/R/F1: 0.418/0.532/0.468 TP/FP/FN: 223/310/196 std-P/R/F1: 0.396/0.416/0.386	best proba query annotator
+
+BestProbaFirst AlphaNumeric
+C2W	mac-P/R/F1: 0.492/0.592/0.474 mic-P/R/F1: 0.443/0.580/0.502 TP/FP/FN: 243/306/176 std-P/R/F1: 0.389/0.413/0.385	best proba query annotator
+A2W-SAM	mac-P/R/F1: 0.460/0.558/0.442 mic-P/R/F1: 0.404/0.530/0.458 TP/FP/FN: 222/328/197 std-P/R/F1: 0.387/0.415/0.381	best proba query annotator
+
+BestProbaFirst Spelling correction
+C2W	mac-P/R/F1: 0.481/0.632/0.474 mic-P/R/F1: 0.439/0.613/0.512 TP/FP/FN: 257/328/162 std-P/R/F1: 0.381/0.403/0.381	best proba query annotator
+A2W-SAM	mac-P/R/F1: 0.446/0.589/0.437 mic-P/R/F1: 0.399/0.558/0.466 TP/FP/FN: 234/352/185 std-P/R/F1: 0.381/0.412/0.381	best proba query annotator
 
 WorstProbaFirst
 C2W	mac-P/R/F1: 0.368/0.457/0.339 mic-P/R/F1: 0.284/0.415/0.337 TP/FP/FN: 174/439/245 std-P/R/F1: 0.371/0.411/0.351	worst proba query annotator
 A2W-SAM	mac-P/R/F1: 0.354/0.436/0.324 mic-P/R/F1: 0.269/0.394/0.320 TP/FP/FN: 165/448/254 std-P/R/F1: 0.369/0.407/0.346	worst proba query annotator
 
-BASELINE ANNOTATOR Alphanumeric
-C2W	mac-P/R/F1: 0.492/0.586/0.471 mic-P/R/F1: 0.445/0.563/0.497 TP/FP/FN: 236/294/183 std-P/R/F1: 0.387/0.412/0.381	baseline-1 query annotator
-A2W-SAM	mac-P/R/F1: 0.455/0.547/0.435 mic-P/R/F1: 0.403/0.511/0.451 TP/FP/FN: 214/317/205 std-P/R/F1: 0.385/0.414/0.378	baseline-1 query annotator
+RelationAnnotator Mw
+C2W	mac-P/R/F1: 0.488/0.560/0.437 mic-P/R/F1: 0.446/0.504/0.473 TP/FP/FN: 211/262/208 std-P/R/F1: 0.408/0.414/0.381	relation query annotator
+A2W-SAM	mac-P/R/F1: 0.448/0.513/0.397 mic-P/R/F1: 0.395/0.446/0.419 TP/FP/FN: 187/287/232 std-P/R/F1: 0.413/0.421/0.382	relation query annotator
 
-BestProbaFirst AlphaNumeric
-C2W	mac-P/R/F1: 0.492/0.592/0.474 mic-P/R/F1: 0.443/0.580/0.502 TP/FP/FN: 243/306/176 std-P/R/F1: 0.389/0.413/0.385	best proba query annotator
-A2W-SAM	mac-P/R/F1: 0.460/0.558/0.442 mic-P/R/F1: 0.404/0.530/0.458 TP/FP/FN: 222/328/197 std-P/R/F1: 0.387/0.415/0.381	best proba query annotator
+RelationAnnotator Jaccard
+C2W	mac-P/R/F1: 0.491/0.550/0.431 mic-P/R/F1: 0.449/0.487/0.467 TP/FP/FN: 204/250/215 std-P/R/F1: 0.417/0.419/0.384	relation query annotator
+A2W-SAM	mac-P/R/F1: 0.454/0.512/0.397 mic-P/R/F1: 0.407/0.442/0.423 TP/FP/FN: 185/270/234 std-P/R/F1: 0.420/0.426/0.385	relation query annotator

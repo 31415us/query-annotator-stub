@@ -68,6 +68,8 @@ public class Baseline1Annotator implements Sa2WSystem {
         Queue<SubArray> ranges = new LinkedList<>();
         ranges.add(new SubArray(0, words.size(), words));
 
+        BingPiggyBack.setJsonCaching();
+
         for(int sizeWord = words.size(); sizeWord > 0; sizeWord--){
             Queue<SubArray> nextQueue = new LinkedList<>();
             while(!ranges.isEmpty()){
@@ -80,8 +82,18 @@ public class Baseline1Annotator implements Sa2WSystem {
                 for(int i = sa.x; i < sa.y - sizeWord + 1; i++) {
                     String temp = String.join(" ", sa.arr.subList(i, i+sizeWord));
                     int[] ids;
+
+                    BingPiggyBack binger = new BingPiggyBack();
+                    binger.query(temp);
+
+                    // compute the entities from the correct spelling
+                    String correctedSpelling = binger.getSpellingSuggestion();
+
                     try {
-                        ids = WATRelatednessComputer.getLinks(temp.replaceAll("[^a-zA-Z0-9 ]", ""));
+                        // Remove non alphanumeric char
+                        //ids = WATRelatednessComputer.getLinks(temp.replaceAll("[^a-zA-Z0-9 ]", ""));
+                        //ids = WATRelatednessComputer.getLinks(temp);
+                        ids = WATRelatednessComputer.getLinks(correctedSpelling);
                     } catch (Exception e){
                         System.err.println(e.getMessage());
                         continue;
@@ -90,7 +102,8 @@ public class Baseline1Annotator implements Sa2WSystem {
                         double maxProb = -1;
                         int bestId = 0;
                         for (int id : ids){
-                            double prob = WATRelatednessComputer.getCommonness(temp.replaceAll("[^a-zA-Z0-9 ]", ""), id);
+                            //double prob = WATRelatednessComputer.getCommonness(temp, id);
+                            double prob = WATRelatednessComputer.getCommonness(correctedSpelling, id);
                             if (prob == 0.0) continue;
                             if (prob > maxProb) {
                                 maxProb = prob;
